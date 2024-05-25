@@ -2,7 +2,7 @@
 
 CURRENT_FILE="${BASH_SOURCE[0]}"
 CURRENT_DIR="$(dirname -- "$(readlink -f -- "$0")")"
-ROOT_DIR="$(dirname "$CURRENT_DIR")"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)"
 
 source "$ROOT_DIR/scripts/utils.sh"
 
