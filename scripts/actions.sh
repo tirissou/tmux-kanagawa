@@ -16,6 +16,21 @@ set_state_and_tmux_option() {
   source "$CURRENT_DIR/kanagawa.sh"
 }
 
+toggle_option() {
+  local option=$1
+
+  if [[ $(tmux show-option -gqv "$option") == false ]] || [[ $(read_option_from_state "$option") == false ]]; then
+    set_state_and_tmux_option "$option" true
+  elif [[ $(tmux show-option -gqv "$option") == true ]] || [[ $(read_option_from_state "$option") == true ]]; then
+    set_state_and_tmux_option "$option" false
+  else
+    # option is not set, set it to true
+    set_state_and_tmux_option "$option" true
+  fi
+
+  source "$CURRENT_DIR/kanagawa.sh"
+}
+
 toggle_plugin() {
   local plugin=$1
   local active_plugins=$(get_tmux_option "@kanagawa-plugins" "")
@@ -35,4 +50,6 @@ if [ "$1" = "set_state_and_tmux_option" ]; then
   set_state_and_tmux_option "$2" "$3"
 elif [ "$1" = "toggle_plugin" ]; then
   toggle_plugin "$2"
+elif [ "$1" = "toggle_option" ]; then
+  toggle_option "$2"
 fi

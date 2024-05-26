@@ -8,7 +8,7 @@ read_option_from_state() {
     touch "$STATE_FILE"
   fi
 
-  local row=$(grep "^$1" "$STATE_FILE")
+  local row=$(cat "$STATE_FILE" | grep "$1")
 
   echo "$row" | cut -d ' ' -f2-
 }
@@ -35,3 +35,4 @@ reset_state() {
   rm "$STATE_FILE"
   touch "$STATE_FILE"
 }
+
