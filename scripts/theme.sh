@@ -18,8 +18,8 @@ set_theme() {
       gray=$lotus_yellow_2
       dark_gray=$lotus_white_3
       light_purple=$lotus_red_4
-      dark_purple=$lotus_red_4
-      cyan=$lotus_cyan
+      dark_purple=$sakura_pink
+      cyan=$lotus_blue
       green=$lotus_red_2
       orange=$lotus_aqua_2
       red=$lotus_red_4
